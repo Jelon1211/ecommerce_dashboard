@@ -218,7 +218,7 @@ export const Jobs = () => {
               .map((item: IJobsresponse) => (
                 <tr key={item.id} className="">
                   <td className="flex justify-center my-3">
-                    {/* <input
+                    <input
                       id={`${item.id}`}
                       className="w-4 h-4"
                       type="checkbox"
@@ -228,7 +228,7 @@ export const Jobs = () => {
                           (checkedItem) => checkedItem.id === item.id
                         )?.isChecked
                       }
-                    /> */}
+                    />
                   </td>
                   <td className="text-center">
                     <Link to={`/jobs/${item.id}`}>

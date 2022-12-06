@@ -223,7 +223,7 @@ export const Candidates = () => {
               .map((item: ICandidatesResponse) => (
                 <tr key={item.id} className="">
                   <td className="flex justify-center my-3">
-                    {/* <input
+                    <input
                       id={`${item.id}`}
                       className="w-4 h-4"
                       type="checkbox"
@@ -233,7 +233,7 @@ export const Candidates = () => {
                           (checkedItem) => checkedItem.id === item.id
                         )?.isChecked
                       }
-                    /> */}
+                    />
                   </td>
                   <td className="text-center">
                     <Link to={`/candidates/${item.id}`}>

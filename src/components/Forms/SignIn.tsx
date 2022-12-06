@@ -8,12 +8,17 @@ import { AuthService } from "../../services/AuthService";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "contexts/ContextProvider";
 import { Button } from "components/index";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { FiSettings } from 'react-icons/fi';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import { ThemeSettings } from '../../components/index';
+
 
 
 const SignIn = () => {
-  const { currentMode, currentColor } = useStateContext();
-  const [userDoesntExist, setUserDoesntExist] = useState<boolean>(false);
+  const { setCurrentColor, setCurrentMode, currentMode, currentColor, themeSettings, setThemeSettings } = useStateContext();
+
+  const [userDoesntExist, setUserDoesntExist] = useState<boolean>(false);  
 
   const authService = new AuthService();
   const navigate = useNavigate();
@@ -47,7 +52,17 @@ const SignIn = () => {
     signInUser(data);
   };
 
+  useEffect(() => {
+    const currentThemeColor = localStorage.getItem('colorMode');
+    const currentThemeMode = localStorage.getItem('themeMode');
+    if (currentThemeColor && currentThemeMode) {
+    setCurrentColor(currentThemeColor);
+    setCurrentMode(currentThemeMode);
+    }
+}, []);
+
   return (
+    <>
     <div className={`${currentMode === 'Dark' ? 'dark' : ''}`}>
       <div className="w-full min-h-screen flex flex-col justify-center items-center dark:bg-main-dark-bg bg-main-bg">
       <form onSubmit={handleSubmit(onSubmit)} className={`text-center dark:text-gray-200 p-10 rounded-lg dark:bg-secondary-dark-bg bg-white shadow-lg shadow-indigo-500/40 dark:shadow-lg`}>
@@ -97,8 +112,26 @@ const SignIn = () => {
           </p>
         </div>
       </form>
+      <div className="flex w-full justify-end sm:mr-10 md:mr-16 lg:mr-24 mt-6">
+      <TooltipComponent
+              content="Settings"
+              position="RightBottom"
+            >
+              <button
+                type="button"
+                onClick={() => setThemeSettings(true)}
+                style={{ background: currentColor, borderRadius: '50%' }}
+                className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
+              >
+                <FiSettings />
+              </button>
+
+      </TooltipComponent>
+    {themeSettings && (<ThemeSettings />)}
+      </div>
       </div>
     </div>
+    </>
   );
 };
 export default SignIn;

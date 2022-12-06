@@ -6,9 +6,14 @@ import * as Yup from "yup";
 import { validationRules } from "./validationRules";
 import { useStateContext } from "contexts/ContextProvider";
 import { Button } from "components/index";
+import { useEffect } from "react";
+import { FiSettings } from 'react-icons/fi';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import { ThemeSettings } from '../../components/index';
+
 
 const Reset = () => {
-  const { currentMode, currentColor } = useStateContext();
+  const { setCurrentColor, setCurrentMode, currentMode, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
   const formSchema = Yup.object().shape({
     email: validationRules.email,
@@ -21,6 +26,15 @@ const Reset = () => {
   } = useForm<IFormInput>(formOptions);
   const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) =>
     console.log(data);
+
+    useEffect(() => {
+      const currentThemeColor = localStorage.getItem('colorMode');
+      const currentThemeMode = localStorage.getItem('themeMode');
+      if (currentThemeColor && currentThemeMode) {
+      setCurrentColor(currentThemeColor);
+      setCurrentMode(currentThemeMode);
+      }
+  }, []);
 
   return (
     <div className={`${currentMode === 'Dark' ? 'dark' : ''}`}>
@@ -60,6 +74,23 @@ const Reset = () => {
           </p>
         </div>
       </form>
+      <div className="flex w-full justify-end sm:mr-10 md:mr-16 lg:mr-24 mt-6">
+      <TooltipComponent
+              content="Settings"
+              position="RightBottom"
+            >
+              <button
+                type="button"
+                onClick={() => setThemeSettings(true)}
+                style={{ background: currentColor, borderRadius: '50%' }}
+                className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
+              >
+                <FiSettings />
+              </button>
+
+      </TooltipComponent>
+    {themeSettings && (<ThemeSettings />)}
+      </div>
     </div>
     </div>
   );

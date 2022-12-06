@@ -7,9 +7,14 @@ import { validationRules } from "./validationRules";
 import { AuthService } from "../../services/AuthService";
 import { useStateContext } from "contexts/ContextProvider";
 import { Button } from "components/index";
+import { useEffect } from "react";
+import { FiSettings } from 'react-icons/fi';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import { ThemeSettings } from '../../components/index';
+
 
 const SignUp = () => {
-  const { currentMode, currentColor } = useStateContext();
+  const { setCurrentColor, setCurrentMode, currentMode, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
   const authService = new AuthService();
   const navigate = useNavigate();
@@ -36,6 +41,15 @@ const SignUp = () => {
   const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
     signUpUser(data)
   };
+
+  useEffect(() => {
+    const currentThemeColor = localStorage.getItem('colorMode');
+    const currentThemeMode = localStorage.getItem('themeMode');
+    if (currentThemeColor && currentThemeMode) {
+    setCurrentColor(currentThemeColor);
+    setCurrentMode(currentThemeMode);
+    }
+}, []);
 
   return (
     <div className={`${currentMode === 'Dark' ? 'dark' : ''}`}>
@@ -101,6 +115,23 @@ const SignUp = () => {
           </p>
         </div>
       </form>
+      <div className="flex w-full justify-end sm:mr-10 md:mr-16 lg:mr-24 mt-6">
+      <TooltipComponent
+              content="Settings"
+              position="RightBottom"
+            >
+              <button
+                type="button"
+                onClick={() => setThemeSettings(true)}
+                style={{ background: currentColor, borderRadius: '50%' }}
+                className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
+              >
+                <FiSettings />
+              </button>
+
+      </TooltipComponent>
+    {themeSettings && (<ThemeSettings />)}
+      </div>
     </div>
     </div>
   );

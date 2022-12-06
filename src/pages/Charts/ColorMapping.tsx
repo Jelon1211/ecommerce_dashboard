@@ -39,7 +39,6 @@ export const ColorMapping = () => {
             />
           </SeriesCollectionDirective>
           <RangeColorSettingsDirective>
-            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             {/*    @ts-ignore: Unreachable code error */}
             {rangeColorMapping.map((item, index) => <RangeColorSettingDirective key={index} {...item} />)}
           </RangeColorSettingsDirective>

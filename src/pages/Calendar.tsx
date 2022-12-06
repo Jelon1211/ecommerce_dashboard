@@ -6,7 +6,6 @@ import { scheduleData } from '../data/dummy';
 import { Header } from '../components/index';
 import ContentWrapper from './ContentWrapper/ContentWrapper';
 
-// eslint-disable-next-line react/destructuring-assignment
 const PropertyPane = (props: any) => <div className="mt-5">{props.children}</div>;
 
 export const Calendar = () => {
@@ -18,7 +17,6 @@ export const Calendar = () => {
   };
 
   const onDragStart = (arg: any) => {
-    // eslint-disable-next-line no-param-reassign
     arg.navigation.enable = true;
   };
 

@@ -7,10 +7,8 @@ import ContentWrapper from 'pages/ContentWrapper/ContentWrapper';
 
 const date1 = new Date('2017, 1, 1');
 
-// eslint-disable-next-line consistent-return
 function filterValue(value: any) {
   if (value.x >= date1) {
-    // eslint-disable-next-line no-sequences
     return value.x, value.high, value.low;
   }
 }

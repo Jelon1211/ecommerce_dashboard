@@ -1,7 +1,7 @@
 export interface IStacked {
-    width: string;
-    height: string;
-    currentMode: string;
+    width?: string;
+    height?: string;
+    currentMode?: string;
   }
   
 export interface ISparkLine{

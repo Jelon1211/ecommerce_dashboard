@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, Jobs } from './pages';
 import './App.css';
 
 
@@ -14,23 +15,6 @@ import AccessToken from 'pages/AccessToken';
 import ProtectedRoutes from 'components/ProtectedRoutes';
 import SignUp from 'components/Forms/SignUp';
 import Reset from 'components/Forms/Reset';
-import { Ecommerce } from 'pages/Ecommerce';
-import { Orders } from 'pages/Orders';
-import { Customers } from 'pages/Customers';
-import { Jobs } from 'pages/Jobs';
-import { Kanban } from 'pages/Kanban';
-import { Editor } from 'pages/Editor';
-import { Calendar } from 'pages/Calendar';
-import { ColorPicker } from 'pages/ColorPicker';
-import { Line } from 'pages/Charts/Line';
-import { Area } from 'pages/Charts/Area';
-import { Bar } from 'pages/Charts/Bar';
-import { Pie } from 'pages/Charts/Pie';
-import { Financial } from 'pages/Charts/Financial';
-import { ColorMapping } from 'pages/Charts/ColorMapping';
-import { Pyramid } from 'pages/Charts/Pyramid';
-import { Employees } from 'pages/Employees';
-import { Stacked } from 'components/Charts/Stacked';
 
 configure({ axios: API });
 
@@ -80,7 +64,7 @@ const App = () => {
                 <Route path="/financial" element={<Financial />} />
                 <Route path="/color-mapping" element={<ColorMapping />} />
                 <Route path="/pyramid" element={<Pyramid />} />
-                <Route path="/stacked" element={<Stacked width={''} height={''} currentMode={''} />} />
+                <Route path="/stacked" element={<Stacked />} />
 
                 {/* Accesstoken */}
                 <Route path="/accesstoken" element={<AccessToken />} />
@@ -88,11 +72,7 @@ const App = () => {
 
               </Routes>
             </AuthStateContext.Provider>
-            {/* </div> */}
-          {/* </div>
-        </div> */}
       </BrowserRouter>
-  {/* </div> */}
     </>
     );
 };

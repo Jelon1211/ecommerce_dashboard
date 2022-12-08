@@ -40,8 +40,7 @@ export const Candidates = () => {
         url: `/candidates/${id}`,
         data: id,
       })
-      setCandidatesResponseData(candidatesResponseData.filter((candidatesResponseData) => {
-        return candidatesResponseData.id !== id}))
+      setCandidatesResponseData((current) => current.filter(responseData => !(responseData.id === id)));
   }
     catch(err){console.log(err);}
   };

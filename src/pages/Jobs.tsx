@@ -42,11 +42,15 @@ export const Jobs = () => {
         url: `/jobs/${id}`,
         data: id
       });
-      setJobsResponseData(jobsResponseData.filter((jobsResponseData) => {
-        return jobsResponseData.id !== id;
-      }));
+      setJobsResponseData((current) =>
+      current.filter(
+        (responseData) => !(responseData.id === id)
+      )
+    );
     }
     catch(err){console.log(err);}
+
+    console.log(id);
   };
 
   const handleAxiosSettingResponseDataAsArray = () => {

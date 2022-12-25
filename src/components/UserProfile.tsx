@@ -4,6 +4,7 @@ import { Button } from './index';
 import { userProfileData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const avatar = require("../data/avatar.jpg")
 
 
@@ -16,6 +17,10 @@ export const UserProfile = () => {
     localStorage.removeItem("lastname");
     localStorage.removeItem("name");
     localStorage.removeItem("token");
+    const logout = async () => {
+      await axios.post(`${process.env.REACT_APP_ADRESS}/auth/logout`);
+    }
+    logout();
     navigate('/signin');
   };
 

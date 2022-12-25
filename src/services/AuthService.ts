@@ -36,11 +36,20 @@ export class AuthService {
     return result;
   }
 
-  public async getUserData(token: string) {
+  public async getUserDataToken(token: string) {
     return (
       await axios.get<UserData>(`${this.host}/auth`, {
         headers: { Authorization: `Bearer ${token}` },
       })
     ).data;
   }
+
+  public async getUserData(username: string) {
+    return (
+      await axios.post<UserData>(`${this.host}/auth/user`, {
+        username: username
+      })
+    ).data;
+  }
+
 }

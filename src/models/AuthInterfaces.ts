@@ -1,5 +1,6 @@
 export interface LocationState {
   accessToken: string;
+  username: string;
 }
 
 export interface UserData {
@@ -10,5 +11,5 @@ export interface UserData {
 }
 
 export interface LoginResponse {
-  access_token: string;
+  accessToken: string;
 }

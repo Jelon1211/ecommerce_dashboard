@@ -37,7 +37,10 @@ const SignIn = () => {
     try {
       const loginUser = await authService.login(data.email, data.password);
       navigate("/accesstoken", {
-        state: { accessToken: loginUser.access_token },
+        state: { 
+        accessToken: loginUser.accessToken,
+        username: data.email,
+        },
         replace: true,
       });   
     }
@@ -46,7 +49,7 @@ const SignIn = () => {
     }
   }
 
-  console.log(userDoesntExist);
+  // console.log(userDoesntExist);
 
   const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
     signInUser(data);

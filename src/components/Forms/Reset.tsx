@@ -42,7 +42,7 @@ const Reset = () => {
       <form onSubmit={handleSubmit(onSubmit)} className={`text-center dark:text-gray-200 p-10 rounded-lg dark:bg-secondary-dark-bg bg-white shadow-lg shadow-indigo-500/40 dark:shadow-lg`}>
         <h2 className="text-4xl p-3">Password Reset</h2>
         <input
-          className="m-2 p-2 rounded-md bg-main-bg hover:drop-shadow-xl"
+          className="m-2 p-2 rounded-md bg-main-bg hover:drop-shadow-xl text-black"
           type="email"
           placeholder="Email *"
           autoFocus

@@ -7,16 +7,16 @@ const AccessToken = () => {
   const authService = new AuthService();
   const location = useLocation();
 
-  const { accessToken } = location.state as LocationState;
+  const { accessToken, username } = location.state as LocationState;
   localStorage.setItem("token", accessToken);
 
   const gettingUserData = async () => {
-    const userData = await authService.getUserData(accessToken);
-    const {firstname, lastname, username} = userData
-       localStorage.setItem("name", firstname);
-        localStorage.setItem("email", username);
-        localStorage.setItem("lastname", lastname);
-  }
+    const userData = await authService.getUserData(username);
+       localStorage.setItem("name", userData.firstname);
+        localStorage.setItem("email", userData.username);
+        localStorage.setItem("lastname", userData.lastname);
+    console.log(userData);
+}
 
 useEffect( ()=> {
   gettingUserData()

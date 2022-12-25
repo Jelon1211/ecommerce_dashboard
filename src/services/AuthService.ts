@@ -38,7 +38,7 @@ export class AuthService {
 
   public async getUserData(token: string) {
     return (
-      await axios.get<UserData>(`${this.host}/app/profile`, {
+      await axios.get<UserData>(`${this.host}/auth`, {
         headers: { Authorization: `Bearer ${token}` },
       })
     ).data;

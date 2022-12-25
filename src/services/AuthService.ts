@@ -21,7 +21,7 @@ export class AuthService {
     password: string
   ) {
     const result = axios
-      .post(`${this.host}/app/auth/register`, {
+      .post(`${this.host}/users`, {
         firstname: firstName,
         lastname: lastName,
         username: email,

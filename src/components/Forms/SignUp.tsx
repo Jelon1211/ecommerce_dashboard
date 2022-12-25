@@ -57,7 +57,7 @@ const SignUp = () => {
       <form onSubmit={handleSubmit(onSubmit)} className={`text-center dark:text-gray-200 p-10 rounded-lg dark:bg-secondary-dark-bg bg-white shadow-lg shadow-indigo-500/40 dark:shadow-lg`}>
         <h2 className="text-4xl p-3">Enter Your Details</h2>
         <input
-          className="m-2 p-2 rounded-md bg-main-bg hover:drop-shadow-xl"
+          className="m-2 p-2 rounded-md bg-main-bg hover:drop-shadow-xl text-black"
           type="text"
           placeholder="First Name *"
           autoFocus
@@ -65,28 +65,28 @@ const SignUp = () => {
         />
         <p className="text-rose-600 text-sm mb-2">{errors.firstName?.message}</p>
         <input
-          className="m-2 p-2 rounded-md bg-main-bg hover:drop-shadow-xl"
+          className="m-2 p-2 rounded-md bg-main-bg hover:drop-shadow-xl text-black"
           type="text"
           placeholder="Last Name *"
           {...register("lastName")}
         />
         <p className="text-rose-600 text-sm mb-2">{errors.lastName?.message}</p>
         <input
-          className="m-2 p-2 rounded-md bg-main-bg hover:drop-shadow-xl"
+          className="m-2 p-2 rounded-md bg-main-bg hover:drop-shadow-xl text-black"
           type="email"
           placeholder="Email *"
           {...register("email")}
         />
         <p className="text-rose-600 text-sm mb-2">{errors.email?.message}</p>
         <input
-          className="m-2 p-2 rounded-md bg-main-bg hover:drop-shadow-xl"
+          className="m-2 p-2 rounded-md bg-main-bg hover:drop-shadow-xl text-black"
           type="password"
           placeholder="Password *"
           {...register("password")}
         />
         <p className="text-rose-600 text-sm mb-2">{errors.password?.message}</p>
         <input
-          className="m-2 mb-5 p-2 rounded-md bg-main-bg hover:drop-shadow-xl"
+          className="m-2 mb-5 p-2 rounded-md bg-main-bg hover:drop-shadow-xl text-black"
           type="password"
           placeholder="Retype Password *"
           {...register("retypePassword")}

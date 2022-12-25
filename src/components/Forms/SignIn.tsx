@@ -68,7 +68,7 @@ const SignIn = () => {
       <form onSubmit={handleSubmit(onSubmit)} className={`text-center dark:text-gray-200 p-10 rounded-lg dark:bg-secondary-dark-bg bg-white shadow-lg shadow-indigo-500/40 dark:shadow-lg`}>
         <h2 className="text-4xl p-3">Sign In</h2>
         <input
-          className="m-2 p-2 rounded-md"
+          className="m-2 p-2 rounded-md text-black"
           type="email"
           placeholder="admin@admin.com"
           autoFocus
@@ -76,7 +76,7 @@ const SignIn = () => {
         />
         <p className="text-rose-600 text-sm mb-2">{errors.email?.message}</p>
         <input
-          className="m-2 p-2 rounded-md"
+          className="m-2 p-2 rounded-md text-black"
           type="password"
           placeholder="admin"
           {...register("password")}

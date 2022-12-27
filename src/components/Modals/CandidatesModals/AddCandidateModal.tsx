@@ -18,7 +18,7 @@ const AddCandidateModal = ({ open, onClose }: IModal) => {
 
   const onModalSubmit = async(data: SubmitCandidatesData) => {
     try {
-      executePost({
+     await executePost({
         data: {
           ...data
         }
@@ -47,20 +47,14 @@ const AddCandidateModal = ({ open, onClose }: IModal) => {
             <input
               type="text"
               placeholder="Name"
-              className="w-full lg:w-2/6 border-1 border-black/25 rounded-sm p-2 my-1 lg:mr-1"
+              className="w-full border-1 border-black/25 rounded-sm p-2 my-1 mr-2"
               {...register("name", { required: true })}
             ></input>
             <input
               type="date"
               placeholder="Date"
-              className="w-full lg:w-2/6 border-1 border-black/25 rounded-sm p-2 my-1 lg:mr-1"
+              className="w-full border-1 border-black/25 rounded-sm p-2 my-1"
               {...register("date", { required: true })}
-            ></input>
-            <input
-              type="text"
-              placeholder="Position"
-              className="w-full lg:w-2/6 border-1 border-black/25 rounded-sm p-2 my-1"
-              {...register("position", { required: true })}
             ></input>
           </div>
           <div className="flex flex-col justify-evenly w-full lg:flex-row">
@@ -68,22 +62,22 @@ const AddCandidateModal = ({ open, onClose }: IModal) => {
               type="text"
               placeholder="Short Description"
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1"
-              {...register("shortDescription", { required: true })}
+              {...register("shortdescription", { required: true })}
             ></input>
           </div>
           <div className="flex flex-col justify-evenly w-full lg:flex-row">
             <input
               type="text"
               placeholder="Long Description"
-              className="w-full border-1 border-black/25 rounded-sm h-14 p-2 my-1"
-              {...register("longDescription", { required: true })}
+              className="w-full border-1 border-black/25 rounded-sm p-2 my-1"
+              {...register("longdescription", { required: true })}
             ></input>
           </div>
           <div className="flex flex-col justify-evenly w-full lg:flex-row">
             <input
               type="text"
               placeholder="Logo"
-              className="w-full lg:w-1/2 border-1 border-black/25 rounded-sm p-2 my-1 lg:mr-1"
+              className="w-full border-1 border-black/25 rounded-sm p-2 my-1"
               {...register("logo", { required: true })}
             ></input>
           </div>

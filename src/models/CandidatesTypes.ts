@@ -4,7 +4,7 @@ export interface CheckedCandidatesListItem {
 }
 
 export interface ICandidatesResponse {
-  id: number;
+  _id: number;
   name: string;
   position: string;
   date: string;

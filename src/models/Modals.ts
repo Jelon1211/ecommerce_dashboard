@@ -17,8 +17,8 @@ export interface SubmitCandidatesData {
   position: string;
   date: string;
   logo: string;
-  shortDescription: string;
-  longDescription: string;
+  shortdescription: string;
+  longdescription: string;
   companyName: string;
   id?: number;
 }

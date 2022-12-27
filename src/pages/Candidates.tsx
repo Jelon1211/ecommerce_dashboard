@@ -35,12 +35,14 @@ export const Candidates = () => {
   const {changeCurrentPage, changePerPage, paginatedData, currentPage, perPage} = usePagination(candidatesResponseData)
 
   const handleAxiosDelete = async (id: number) => {
+    const idDelte = {id}
     try{
-      executeDelete({
-        url: `/candidates/${id}`,
-        data: id,
+     await executeDelete({
+        // url: `/candidates/${id}`,
+        url: `/candidates/`,
+        data: idDelte,
       })
-      setCandidatesResponseData((current) => current.filter(responseData => !(responseData.id === id)));
+      setCandidatesResponseData((current) => current.filter(responseData => !(responseData._id === id)));
   }
     catch(err){console.log(err);}
   };
@@ -95,11 +97,11 @@ export const Candidates = () => {
     handleAxiosDelete(id);
   };
 
-  const handleDeleteChecked = (event: ChangeEvent<HTMLSelectElement>) => {
+  const handleDeleteChecked = async (event: ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value === "delete") {
       for (let element of isSingleCandidateCheck) {
         if (element.isChecked) {
-          handleAxiosDelete(element.id);
+         await handleAxiosDelete(element.id);
         }
       }
     }
@@ -116,7 +118,7 @@ export const Candidates = () => {
   const handleIndividualCheck = useCallback(() => {
     setIsSingleCandidateCheck(
       candidatesResponseData.map((parameter: ICandidatesResponse) => ({
-        id: parameter.id,
+        id: parameter._id,
         isChecked: false,
       }))
     );
@@ -220,22 +222,22 @@ export const Candidates = () => {
                     .includes(searchBarInputText.toLocaleLowerCase())
               )
               .map((item: ICandidatesResponse) => (
-                <tr key={item.id} className="">
+                <tr key={item._id} className="">
                   <td className="flex justify-center my-3">
                     <input
-                      id={`${item.id}`}
+                      id={`${item._id}`}
                       className="w-4 h-4"
                       type="checkbox"
-                      onChange={() => toggleIndividualCheck(item.id)}
+                      onChange={() => toggleIndividualCheck(item._id)}
                       checked={
                         isSingleCandidateCheck.find(
-                          (checkedItem) => checkedItem.id === item.id
+                          (checkedItem) => checkedItem.id === item._id
                         )?.isChecked
                       }
                     />
                   </td>
                   <td className="text-center">
-                    <Link to={`/candidates/${item.id}`}>
+                    <Link to={`/candidates/${item._id}`}>
                       <span className="my-3">{item.name}</span>
                     </Link>
                   </td>
@@ -243,13 +245,13 @@ export const Candidates = () => {
                   <td className="flex justify-center mt-2">
                     <DeleteOutlined
                       className="cursor-pointer"
-                      onClick={() => deleteClickIcon(item.id)}
+                      onClick={() => deleteClickIcon(item._id)}
                       style={{color: currentColor}}
                     />
-                    <Link to={`/candidates/${item.id}`}>
+                    <Link to={`/candidates/${item._id}`}>
                       <VisibilityOutlined style={{color: currentColor}} className="mx-3" />
                     </Link>
-                    <Edit style={{color: currentColor}} className="cursor-pointer" onClick={() => {setModalEditId(item.id) 
+                    <Edit style={{color: currentColor}} className="cursor-pointer" onClick={() => {setModalEditId(item._id) 
            setIsModalEditCandidateOpen(true)}}/>
                   </td>
                 </tr>

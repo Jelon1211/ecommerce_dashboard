@@ -19,7 +19,7 @@ const useCandidatesService = () => {
     return useAxios(
       {
         url: `/candidates/`,
-        method: "PUT"
+        method: "PATCH"
       },
       {manual: true}
     );

@@ -19,7 +19,7 @@ const useJobsService = () => {
     return useAxios(
       {
         url: `/jobs/`,
-        method: "PUT"
+        method: "PATCH"
       },
       {manual: true}
     );

@@ -45,8 +45,8 @@ const CandidatesDetails = () => {
         <div className="grid grid-cols-[1fr] md:grid-cols-[3fr_2fr] gap-4">
         <div className="w-full bg-white rounded-3xl mx-2">
           <h3><strong>Date of start:</strong> {candidateIdResponseData.date}</h3>
-          <h3><strong>Short desctiption:</strong> {candidateIdResponseData.shortDescription}</h3>
-          <h3><strong>Long desctiption:</strong> {candidateIdResponseData.longDescription}</h3>
+          <h3><strong>Short desctiption:</strong> {candidateIdResponseData.shortdescription}</h3>
+          <h3><strong>Long desctiption:</strong> {candidateIdResponseData.longdescription}</h3>
         </div>
         <div className="w-full bg-gray-200 rounded-3xl px-2 py-2 flex justify-center">
           <img src={candidateIdResponseData.logo} alt="" className="rounded-3xl"/>

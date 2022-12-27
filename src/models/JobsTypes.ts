@@ -4,12 +4,12 @@ export interface CheckedListItem {
 }
 
 export interface IJobsresponse {
-  id: number;
+  _id: number;
   title: string;
   date: string;
   logo: string;
-  shortDescription: string;
-  longDescription: string;
+  shortdescription: string;
+  longdescription: string;
   companyName: string;
   isChecked?: boolean;
 }

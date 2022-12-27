@@ -36,21 +36,22 @@ export const Jobs = () => {
 
   const [, executeDelete] = useDeleteJobs()
 
-  const handleAxiosDelete = (id: number) => {
+  const handleAxiosDelete = async (id: number) => {
+    const idDelete = {id};
+    console.log(idDelete);
     try{
-      executeDelete({
-        url: `/jobs/${id}`,
-        data: id
+      await executeDelete({
+        // url: `/jobs/${id}`,
+        url: `/jobs/`,
+        data: idDelete
       });
       setJobsResponseData((current) =>
       current.filter(
-        (responseData) => !(responseData.id === id)
+        (responseData) => !(responseData._id === id)
       )
     );
     }
     catch(err){console.log(err);}
-
-    console.log(id);
   };
 
   const handleAxiosSettingResponseDataAsArray = () => {
@@ -103,11 +104,11 @@ export const Jobs = () => {
     handleAxiosDelete(id);
   };
 
-  const handleDeleteChecked = (event: ChangeEvent<HTMLSelectElement>) => {
+  const handleDeleteChecked = async (event: ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value === "delete") {
       for (let element of isSingleJobChecked) {
         if (element.isChecked) {
-          handleAxiosDelete(element.id);
+         await handleAxiosDelete(element.id);
         }
       }
     }
@@ -124,7 +125,7 @@ export const Jobs = () => {
   const handleIndividualCheck = useCallback(() => {
     setIsSingleJobChecked(
       jobsResponseData.map((parameter: IJobsresponse) => ({
-        id: parameter.id,
+        id: parameter._id,
         isChecked: false,
       }))
     );
@@ -158,6 +159,7 @@ export const Jobs = () => {
     handleActionState();
     handleCheckAllState();
   }, [isSingleJobChecked, handleActionState, handleCheckAllState, handleCountingRows]);
+
 
   if (loading) {
     return <LoadingScreen />;
@@ -220,22 +222,22 @@ export const Jobs = () => {
                     .includes(searchBarInputText.toLocaleLowerCase())
               )
               .map((item: IJobsresponse) => (
-                <tr key={item.id} className="">
+                <tr key={item._id} className="">
                   <td className="flex justify-center my-3">
                     <input
-                      id={`${item.id}`}
+                      id={`${item._id}`}
                       className="w-4 h-4"
                       type="checkbox"
-                      onChange={() => toggleIndividualCheck(item.id)}
+                      onChange={() => toggleIndividualCheck(item._id)}
                       checked={
                         isSingleJobChecked.find(
-                          (checkedItem) => checkedItem.id === item.id
+                          (checkedItem) => checkedItem.id === item._id
                         )?.isChecked
                       }
                     />
                   </td>
                   <td className="text-center">
-                    <Link to={`/jobs/${item.id}`}>
+                    <Link to={`/jobs/${item._id}`}>
                       <span className="my-3">{item.title}</span>
                     </Link>
                   </td>
@@ -243,13 +245,13 @@ export const Jobs = () => {
                   <td className="flex justify-center mt-2">
                     <DeleteOutlined
                       className="cursor-pointer"
-                      onClick={() => deleteClickIcon(item.id)}
+                      onClick={() => deleteClickIcon(item._id)}
                       style={{color: currentColor}}
                     />
-                    <Link to={`/jobs/${item.id}`}>
+                    <Link to={`/jobs/${item._id}`}>
                       <VisibilityOutlined style={{color: currentColor}} className="mx-3" />
                     </Link>
-                    <Edit style={{color: currentColor}} className="cursor-pointer" onClick={() => {setModalEditId(item.id) 
+                    <Edit style={{color: currentColor}} className="cursor-pointer" onClick={() => {setModalEditId(item._id) 
                     setIsModalEditJobOpen(true)}}/>
                   </td>
                 </tr>

@@ -9,8 +9,8 @@ export interface ICandidatesResponse {
   position: string;
   date: string;
   logo: string;
-  shortDescription: string;
-  longDescription: string;
+  shortdescription: string;
+  longdescription: string;
   companyName: string;
   isChecked?: boolean;
 }

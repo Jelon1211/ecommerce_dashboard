@@ -86,12 +86,6 @@ const AddCandidateModal = ({ open, onClose }: IModal) => {
               className="w-full lg:w-1/2 border-1 border-black/25 rounded-sm p-2 my-1 lg:mr-1"
               {...register("logo", { required: true })}
             ></input>
-            <input
-              type="text"
-              placeholder="Company Name"
-              className="w-full lg:w-1/2 border-1 border-black/25 rounded-sm p-2 my-1"
-              {...register("companyName", { required: true })}
-            ></input>
           </div>
           <div className="flex justify-between items-center mt-5">
           <Button

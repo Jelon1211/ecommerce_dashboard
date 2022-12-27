@@ -8,9 +8,8 @@ export interface SubmitJobsData {
   title: string;
   date: string;
   logo: string;
-  shortDescription: string;
-  longDescription: string;
-  companyName: string;
+  shortdescription: string;
+  longdescription: string;
 }
 
 export interface SubmitCandidatesData {

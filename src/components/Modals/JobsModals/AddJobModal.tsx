@@ -17,8 +17,9 @@ const AddJobModal = ({ open, onClose }: IModal) => {
   const [, executePost] = usePostJobs();
 
   const onModalSubmit = async(data: SubmitJobsData) => {
+    console.log(data);
     try {
-      executePost({
+     await executePost({
         data: {
           ...data
         }
@@ -62,25 +63,19 @@ const AddJobModal = ({ open, onClose }: IModal) => {
               type="text"
               placeholder="Short Description"
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1"
-              {...register("shortDescription", { required: true })}
+              {...register("shortdescription", { required: true })}
             ></input>
             <input
               type="text"
               placeholder="Long Description"
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1 h-14"
-              {...register("longDescription", { required: true })}
+              {...register("longdescription", { required: true })}
             ></input>
             <input
               type="text"
               placeholder="Logo"
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1"
               {...register("logo", { required: true })}
-            ></input>
-            <input
-              type="text"
-              placeholder="Company Name"
-              className="w-full border-1 border-black/25 rounded-sm p-2 my-1"
-              {...register("companyName", { required: true })}
             ></input>
           </div>
           <div className="flex justify-between items-center mt-5">

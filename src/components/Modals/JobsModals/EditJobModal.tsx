@@ -21,8 +21,9 @@ const EditJobModal = ({ open, onClose, id }: IModal) => {
   const [, executePut] = usePutJobs();
 
   const onModalSubmit = async(submitData: SubmitJobsData) => {
+    console.log(submitData);
     try {
-    executePut({
+   await executePut({
       data: {
         ...submitData
       }
@@ -52,7 +53,7 @@ const EditJobModal = ({ open, onClose, id }: IModal) => {
           <div className="flex flex-col justify-evenly w-full lg:flex-row">
             <input
               type="text"
-              placeholder={data.title}
+              placeholder={data.title ?? "Title"}
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1 lg:mr-1"
               {...register("title", { required: true })}
             ></input>
@@ -64,29 +65,23 @@ const EditJobModal = ({ open, onClose, id }: IModal) => {
             ></input>
           <input
               type="text"
-              placeholder={data.shortDescription}
+              placeholder={data.shortdescription ?? "Short Description"}
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1"
-              {...register("shortDescription", { required: true })}
+              {...register("shortdescription", { required: true })}
             ></input>
           </div>
           <div>
             <input
               type="text"
-              placeholder={data.longDescription}
+              placeholder={data.longdescription ?? "Long Description"}
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1 h-14"
-              {...register("longDescription", { required: true })}
+              {...register("longdescription", { required: true })}
             ></input>
             <input
               type="text"
-              placeholder={data.logo}
+              placeholder={data.logo ?? "Compoany logo"}
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1 h-14"
               {...register("logo", { required: true })}
-            ></input>
-            <input
-              type="text"
-              placeholder={data.companyName}
-              className="w-full border-1 border-black/25 rounded-sm p-2 my-1 h-14"
-              {...register("companyName", { required: true })}
             ></input>
           </div>
           <div className="flex justify-between items-center mt-5">

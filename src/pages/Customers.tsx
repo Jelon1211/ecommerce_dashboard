@@ -13,7 +13,7 @@ export const Customers = () => {
     <ContentWrapper>
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Customers" />
-      <p className='text-gray-400'>This page was made by using syncfusion element</p>
+      <p className='text-gray-400'>This page was made by using dummy data and syncfusion component</p>
       <GridComponent
         dataSource={customersData}
         enableHover={false}

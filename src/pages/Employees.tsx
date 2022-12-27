@@ -16,7 +16,7 @@ export const Employees = () => {
     <ContentWrapper>
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Employees" />
-      <p className='text-gray-400'>This page was made using syncfusion component</p>
+      <p className='text-gray-400'>This page was made using dummy data and syncfusion component</p>
       <GridComponent
         dataSource={employeesData}
         width="auto"

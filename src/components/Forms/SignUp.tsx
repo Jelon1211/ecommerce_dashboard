@@ -7,14 +7,17 @@ import { validationRules } from "./validationRules";
 import { AuthService } from "../../services/AuthService";
 import { useStateContext } from "contexts/ContextProvider";
 import { Button } from "components/index";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { ThemeSettings } from '../../components/index';
+import MiniLoading from "components/LoadingScreen/MiniLoading";
 
 
 const SignUp = () => {
   const { setCurrentColor, setCurrentMode, currentMode, currentColor, themeSettings, setThemeSettings } = useStateContext();
+
+  const [isMiniLoading, setIsMiniLoading] = useState<boolean>(false);
 
   const authService = new AuthService();
   const navigate = useNavigate();
@@ -38,8 +41,9 @@ const SignUp = () => {
     navigate("/signin");
   }
 
-  const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
-    signUpUser(data)
+  const onSubmit: SubmitHandler<IFormInput> = async (data: IFormInput) => {
+    setIsMiniLoading(true);
+    await signUpUser(data);
   };
 
   useEffect(() => {
@@ -91,6 +95,7 @@ const SignUp = () => {
           placeholder="Retype Password *"
           {...register("retypePassword")}
         />
+          {isMiniLoading ? <><div className="flex"><MiniLoading /> <p className="text-gray-400 dark:text-slate-500 text-sm ml-4"> It may take a while, pleas wait, server is the worst :(</p></div></> : ""}
         <p className="text-rose-600 text-sm mb-2">{errors.retypePassword?.message}</p>
         <div className="hover:drop-shadow-xl text-black dark:shadow-lg dark:hover:shadow-gray-900">
         <Button

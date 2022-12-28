@@ -8,6 +8,7 @@ What does it cover:
 - Personal themes and light/dark mode
 - Filtering and sorting
 - Logging and registering new users
+- Handling access token and refresh token
 - Full RWD
 
 ## Table of Contents

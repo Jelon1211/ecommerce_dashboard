@@ -5,7 +5,7 @@ import { userProfileData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-const avatar = require("../data/avatar.jpg")
+const bear = require("../data/bear.png")
 
 
 export const UserProfile = () => {
@@ -39,7 +39,7 @@ export const UserProfile = () => {
       <div className="flex gap-5 items-center mt-6 border-color border-b-1 pb-6">
         <img
           className="rounded-full h-24 w-24"
-          src={avatar}
+          src={bear}
           alt="user-profile"
         />
         <div>
@@ -50,7 +50,7 @@ export const UserProfile = () => {
       </div>
       <div>
         {userProfileData.map((item, index) => (
-          <div key={index} className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]">
+          <div key={index} className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray dark:hover:bg-[#42464D]">
             <button
               type="button"
               style={{ color: item.iconColor, backgroundColor: item.iconBg }}

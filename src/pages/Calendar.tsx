@@ -32,7 +32,7 @@ type ViewDirective = {
        <ScheduleComponent
         height="650px"
         ref={(schedule) => setScheduleObj(schedule)}
-        selectedDate={new Date(2021, 0, 10)}
+        selectedDate={new Date(2023, 0, 10)}
         eventSettings={{ dataSource: scheduleData }}
         dragStart={onDragStart}
       >
@@ -50,7 +50,7 @@ type ViewDirective = {
             <tr style={{ height: '50px' }}>
               <td style={{ width: '100%' }}>
                 <DatePickerComponent
-                  value={new Date(2021, 0, 10)}
+                  value={new Date(2023, 0, 10)}
                   showClearButton={false}
                   placeholder="Current Date"
                   floatLabelType="Always"

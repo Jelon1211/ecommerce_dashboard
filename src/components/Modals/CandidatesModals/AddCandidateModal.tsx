@@ -76,7 +76,7 @@ const AddCandidateModal = ({ open, onClose }: IModal) => {
           <div className="flex flex-col justify-evenly w-full lg:flex-row">
             <input
               type="text"
-              placeholder="Logo"
+              placeholder="Logo url address"
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1"
               {...register("logo", { required: true })}
             ></input>

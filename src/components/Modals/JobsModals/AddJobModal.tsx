@@ -73,7 +73,7 @@ const AddJobModal = ({ open, onClose }: IModal) => {
             ></input>
             <input
               type="text"
-              placeholder="Logo"
+              placeholder="Logo url address"
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1"
               {...register("logo", { required: true })}
             ></input>

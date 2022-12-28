@@ -7,6 +7,7 @@ import { Stacked, Pie, Button, LineChart, SparkLine } from '../components/index'
 import { earningData, medicalproBranding, recentTransactions, weeklyStats, dropdownData, SparklineAreaData, ecomPieChartData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import ContentWrapper from './ContentWrapper/ContentWrapper';
+import { backdropClasses } from '@mui/material';
 
 const product9 = require("../data/product9.jpg")
 
@@ -27,12 +28,12 @@ export const Ecommerce = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="font-bold text-gray-400 dark:text-black">Earnings</p>
-              <p className="text-2xl text-gray-400 dark:text-black">$63,448.78</p>
+              <p className="text-2xl text-black">$63,448.78</p>
             </div>
             <button
               type="button"
               style={{ backgroundColor: currentColor }}
-              className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full  p-4"
+              className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full p-4 cursor-default	"
             >
               <BsCurrencyDollar />
             </button>
@@ -41,8 +42,9 @@ export const Ecommerce = () => {
             <Button
               color="white"
               bgColor={currentColor}
-              text="Download"
+              text="Download Report"
               borderRadius="10px"
+              cursor='default'
             />
           </div>
         </div>
@@ -52,7 +54,7 @@ export const Ecommerce = () => {
               <button
                 type="button"
                 style={{ color: item.iconColor, backgroundColor: item.iconBg }}
-                className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
+                className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl cursor-default"
               >
                 {item.icon}
               </button>
@@ -113,6 +115,7 @@ export const Ecommerce = () => {
                   bgColor={currentColor}
                   text="Download Report"
                   borderRadius="10px"
+                  cursor='default'
                 />
               </div>
             </div>
@@ -169,7 +172,7 @@ export const Ecommerce = () => {
                       color: item.iconColor,
                       backgroundColor: item.iconBg,
                     }}
-                    className="text-2xl rounded-lg p-4 hover:drop-shadow-xl"
+                    className="text-2xl rounded-lg p-4 hover:drop-shadow-xl cursor-default"
                   >
                     {item.icon}
                   </button>
@@ -189,6 +192,7 @@ export const Ecommerce = () => {
                 bgColor={currentColor}
                 text="Add"
                 borderRadius="10px"
+                cursor='default'
               />
             </div>
 
@@ -210,7 +214,7 @@ export const Ecommerce = () => {
         <div className="md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">Weekly Stats</p>
-            <button type="button" className="text-xl font-semibold text-gray-500">
+            <button type="button" className="text-xl font-semibold text-gray-500 cursor-default">
               <IoIosMore />
             </button>
           </div>
@@ -222,7 +226,7 @@ export const Ecommerce = () => {
                   <button
                     type="button"
                     style={{ background: item.iconBg }}
-                    className="text-2xl hover:drop-shadow-xl text-white rounded-full p-3"
+                    className="text-2xl hover:drop-shadow-xl text-white rounded-full p-3 cursor-default"
                   >
                     {item.icon}
                   </button>
@@ -244,7 +248,7 @@ export const Ecommerce = () => {
         <div className="w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">MedicalPro Branding</p>
-            <button type="button" className="text-xl font-semibold text-gray-400">
+            <button type="button" className="text-xl font-semibold text-gray-400 cursor-default">
               <IoIosMore />
             </button>
           </div>
@@ -290,6 +294,7 @@ export const Ecommerce = () => {
                 bgColor={currentColor}
                 text="Add"
                 borderRadius="10px"
+                cursor='default'
               />
             </div>
 
@@ -299,7 +304,7 @@ export const Ecommerce = () => {
         <div className="w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">Daily Activities</p>
-            <button type="button" className="text-xl font-semibold text-gray-500">
+            <button type="button" className="text-xl font-semibold text-gray-500 cursor-default">
               <IoIosMore />
             </button>
           </div>
@@ -310,8 +315,8 @@ export const Ecommerce = () => {
               alt=""
             />
             <div className="mt-8">
-              <p className="font-semibold text-lg">React 18 coming soon!</p>
-              <p className="text-gray-400 ">By Johnathan Doe</p>
+              <p className="font-semibold text-lg">TypeScript 5 coming soon!</p>
+              <p className="text-gray-400 ">By Dominik Jeleśniański</p>
               <p className="mt-8 text-sm text-gray-400">
                 This will be the small description for the news you have shown
                 here. There could be some great info.
@@ -322,6 +327,7 @@ export const Ecommerce = () => {
                   bgColor={currentColor}
                   text="Read More"
                   borderRadius="10px"
+                  cursor='default'
                 />
               </div>
             </div>
@@ -332,3 +338,4 @@ export const Ecommerce = () => {
     </ContentWrapper>
   );
 };
+

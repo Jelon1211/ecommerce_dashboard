@@ -79,7 +79,7 @@ const EditJobModal = ({ open, onClose, id }: IModal) => {
             ></input>
             <input
               type="text"
-              placeholder={data.logo ?? "Compoany logo"}
+              placeholder={data.logo ?? "Logo url address"}
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1 h-14"
               {...register("logo", { required: true })}
             ></input>

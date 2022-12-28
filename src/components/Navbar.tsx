@@ -10,7 +10,7 @@ import { Cart, Chat, Notification, UserProfile } from './index';
 import { useStateContext } from '../contexts/ContextProvider';
 
 
-const avatar = require("../data/avatar.jpg");
+const bear = require("../data/bear.png");
 
 interface INavButton {
   title: string;
@@ -75,7 +75,7 @@ export const Navbar = () => {
           >
             <img
               className="rounded-full w-8 h-8"
-              src={avatar}
+              src={bear}
               alt="user-profile"
             />
             <p>

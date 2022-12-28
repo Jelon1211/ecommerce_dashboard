@@ -5,8 +5,13 @@ import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 import useJobsDetailsService from "services/JobsDetailsService";
 import { Header } from "components/Header";
 import ContentWrapper from "./ContentWrapper/ContentWrapper";
+import { Button } from "components";
+import { useStateContext } from "contexts/ContextProvider";
 
 const JobsDetails = () => {
+  const { currentColor } = useStateContext();
+
+
   const { jobId } = useParams();
   const [JobIdResponseData, setEmployeeIdResponseData] =
     useState<IJobsresponse>(Object);
@@ -47,11 +52,18 @@ const JobsDetails = () => {
           <h3><strong>Short desctiption:</strong> {JobIdResponseData.shortdescription}</h3>
           <h3><strong>Long desctiption:</strong> {JobIdResponseData.longdescription}</h3>
         </div>
-        <div className="w-full bg-gray-200 rounded-3xl px-2 py-2 flex">
+        <div className="w-full bg-gray-200 rounded-3xl px-2 py-2 flex justify-center">
           <img src={JobIdResponseData.logo} alt="" className="rounded-3xl"/>
         </div>
         </div>
       </div>
+            <Button
+              color="white"
+              bgColor={currentColor}
+              text="Add new job"
+              borderRadius="10px"
+              width={1/4}
+            />
 </div>
     </ContentWrapper>
       </>

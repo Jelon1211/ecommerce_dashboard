@@ -84,7 +84,7 @@ const EditCandidateModal = ({ open, onClose, id }: IModal) => {
           <div className="flex flex-col justify-evenly w-full lg:flex-row">
             <input
               type="text"
-              placeholder={data.logo ?? "Logo"}
+              placeholder={data.logo ?? "Logo url address"}
               className="w-full border-1 border-black/25 rounded-sm p-2 my-1"
               {...register("logo", { required: true })}
             ></input>

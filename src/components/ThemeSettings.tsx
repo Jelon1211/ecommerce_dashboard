@@ -4,6 +4,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { themeColors } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
+import { Button } from 'components';
 
 export const ThemeSettings = () => {
   const { setColor, setMode, currentMode, currentColor, setThemeSettings } = useStateContext();
@@ -57,7 +58,7 @@ export const ThemeSettings = () => {
         </div>
         <div className="p-4 border-t-1 border-color ml-4">
           <p className="font-semibold text-xl ">Theme Colors</p>
-          <div className="flex gap-3">
+          <div className="flex gap-3 mb-5">
             {themeColors.map((item, index) => (
               <TooltipComponent key={index} content={item.name} position="TopCenter">
                 <div
@@ -76,6 +77,15 @@ export const ThemeSettings = () => {
               </TooltipComponent>
             ))}
           </div>
+          <div onClick={() => setThemeSettings(false)}>
+          <Button
+          color="white"
+          bgColor={currentColor}
+          text="Save"
+          borderRadius="10px"
+          width="2/4"
+        />
+        </div>
         </div>
       </div>
     </div>

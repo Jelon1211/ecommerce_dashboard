@@ -48,7 +48,7 @@ const Reset = () => {
           autoFocus
           {...register("email")}
         />
-        <p className="">{errors.email?.message}</p>
+        <p className="text-rose-600 text-sm mb-2">{errors.email?.message}</p>
         <div className="p-3">
           <div className="hover:drop-shadow-xl text-black dark:shadow-lg dark:hover:shadow-gray-900">
         <Button

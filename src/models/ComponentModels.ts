@@ -8,6 +8,7 @@ export interface IButton{
     text?: string;
     borderRadius?: string;
     width?: number | string;
+    cursor?: string;
   }
 
   export interface IHeader {

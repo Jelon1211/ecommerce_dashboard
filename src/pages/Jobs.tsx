@@ -2,7 +2,7 @@ import { Button, Header } from '../components/index';
 import { useStateContext } from '../contexts/ContextProvider';
 
 
-import { DeleteOutlined, Edit, VisibilityOutlined } from "@mui/icons-material";
+import { DeleteOutlined, Edit, VisibilityOutlined, DeleteForever } from "@mui/icons-material";
 import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { TablePagination } from "@mui/material";
@@ -29,7 +29,7 @@ export const Jobs = () => {
   const [numberChecked, setNumberChecked] = useState<number>(0);
   
   const { useGetJobs } = useJobsService();
-  const [{ data, loading }] = useGetJobs();
+  const [{ data, loading }, refetch] = useGetJobs();
   const {useDeleteJobs} = useJobsService();
   
   const {changeCurrentPage, changePerPage, paginatedData, currentPage, perPage} = usePagination(jobsResponseData)
@@ -38,7 +38,6 @@ export const Jobs = () => {
 
   const handleAxiosDelete = async (id: number) => {
     const idDelete = {id};
-    console.log(idDelete);
     try{
       await executeDelete({
         // url: `/jobs/${id}`,
@@ -95,7 +94,8 @@ export const Jobs = () => {
     });
   };
 
-  const onClose = () => {
+  const onClose = async () => {
+    await refetch();
     setIsModalAddJobOpen(false);
     setIsModalEditJobOpen(false);
   };
@@ -104,14 +104,12 @@ export const Jobs = () => {
     handleAxiosDelete(id);
   };
 
-  const handleDeleteChecked = async (event: ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value === "delete") {
+  const handleDeleteChecked = async (event: React.MouseEvent<HTMLDivElement>) => {
       for (let element of isSingleJobChecked) {
         if (element.isChecked) {
          await handleAxiosDelete(element.id);
         }
       }
-    }
   };
 
   const loadInitialData = useCallback( () => {
@@ -160,7 +158,6 @@ export const Jobs = () => {
     handleCheckAllState();
   }, [isSingleJobChecked, handleActionState, handleCheckAllState, handleCountingRows]);
 
-
   if (loading) {
     return <LoadingScreen />;
   }
@@ -170,24 +167,26 @@ export const Jobs = () => {
       <Header category="Steve" title="Jobs" />
       <p className='text-gray-400'>This page was made using real api</p>
       
-      <div className="border-1 overflow-x">
-        <div className="flex flex-col md:flex-row items-center bg-gray-100 p-2 mb-2">
-          <select
-            className="bg-gray-100 order-2 md:order-1 w-fit py-2"
+      <div className="border-1 overflow-x min-w-max">
+        <div className="flex flex-row items-center bg-gray-100 p-2 mb-2 justify-between">
+          {/* <select
+            className="bg-gray-100 w-fit py-2"
             disabled={checkDisabled}
             value={""}
             onChange={handleDeleteChecked}
           >
             <option value="">Action</option>
             <option value="delete">Delete</option>
-          </select>
-          <input
-            className="bg-gray-100 p-0 md:pl-3 py-2 md:ml-12 order-1 md:order2 text-center"
-            type="text"
-            placeholder="Search job"
+          </select> */}
+          <div className='xl:ml-2' onClick={handleDeleteChecked}>
+          <DeleteForever style={{color: `${checkDisabled ? "#999999" : "#000"}`, cursor: `${checkDisabled ? "default" : "pointer"}`}}/>
+          </div>
+            <input className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 shadow-sm rounded-md focus:outline-none p-0 mx-5 md:pl-3 py-2 md:ml-12 w-full text-center focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm max-w-xs" 
+            placeholder="Search for job title" 
+            type="text" 
             onChange={handleSearchQueryChange}
-          />
-          <div className="ml-0 md:ml-auto order-3 md:order-3" onClick={() => setIsModalAddJobOpen(true)}>
+            />
+          <div className="ml-0 md:ml-auto" onClick={() => setIsModalAddJobOpen(true)}>
           <Button
               color="white"
               bgColor={currentColor}
@@ -222,7 +221,7 @@ export const Jobs = () => {
                     .includes(searchBarInputText.toLocaleLowerCase())
               )
               .map((item: IJobsresponse) => (
-                <tr key={item._id} className="">
+                <tr key={item._id} className="hover:bg-gray-200">
                   <td className="flex justify-center my-3">
                     <input
                       id={`${item._id}`}
@@ -238,10 +237,14 @@ export const Jobs = () => {
                   </td>
                   <td className="text-center">
                     <Link to={`/jobs/${item._id}`}>
-                      <span className="my-3">{item.title}</span>
+                      <span className="flex justify-center">{item.title}</span>
                     </Link>
                   </td>
-                  <td className=""><span className='flex justify-center'>{item.date}</span></td>
+                  <td className="text-center">
+                  <Link to={`/jobs/${item._id}`}>
+                    <span className='flex justify-center'>{new Date(item.date).toDateString()}</span>
+                  </Link>
+                    </td>
                   <td className="flex justify-center mt-2">
                     <DeleteOutlined
                       className="cursor-pointer"

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CheckedListItem, IJobsresponse } from "../models/JobsTypes";
 import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 import useJobsDetailsService from "services/JobsDetailsService";
@@ -52,18 +52,20 @@ const JobsDetails = () => {
           <h3><strong>Short desctiption:</strong> {JobIdResponseData.shortdescription}</h3>
           <h3><strong>Long desctiption:</strong> {JobIdResponseData.longdescription}</h3>
         </div>
-        <div className="w-full bg-gray-200 rounded-3xl px-2 py-2 flex justify-center">
+        <div className="w-full bg-gray-200 rounded-3xl px-2 py-2 flex justify-center mb-5">
           <img src={JobIdResponseData.logo} alt="" className="rounded-3xl"/>
         </div>
         </div>
       </div>
+      <Link to={`/jobs`}>
             <Button
               color="white"
               bgColor={currentColor}
-              text="Add new job"
+              text="Back"
               borderRadius="10px"
               width={1/4}
             />
+      </Link>
 </div>
     </ContentWrapper>
       </>

@@ -168,9 +168,9 @@ export const Candidates = () => {
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Candidates" />
       <p className='text-gray-400'>This page was made using real api</p>
-      
+      <div className="overflow-x-auto">
       <div className="border-1 overflow-x min-w-max">
-        <div className="flex flex-col md:flex-row items-center bg-gray-100 p-2 mb-2">          
+        <div className="flex flex-row items-center bg-gray-100 p-2 mb-2 justify-between">          
         <div className='xl:ml-2' onClick={handleDeleteChecked}>
           <DeleteForever style={{color: `${checkDisabled ? "#999999" : "#000"}`, cursor: `${checkDisabled ? "default" : "pointer"}`}}/>
           </div>
@@ -267,6 +267,7 @@ export const Candidates = () => {
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </div>
+      </div>
       </div>
     </div>
     </ContentWrapper>

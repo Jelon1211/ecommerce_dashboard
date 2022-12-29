@@ -39,7 +39,7 @@ const CandidatesDetails = () => {
     <>
      <ContentWrapper>
      <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-      <Header category="Page" title="Jobs Details" />
+      <Header category="Page" title="Candidates Details" />
       <p className='text-gray-400'>This page was made using real api</p>
       <div className="w-full border-1 mb-5">
         <div className="w-full bg-gray-100 p-2 mb-2">
@@ -57,7 +57,7 @@ const CandidatesDetails = () => {
         </div>
         </div>
       </div>
-      <Link to={`/jobs`}>
+      <Link to={`/candidates`}>
             <Button
               color="white"
               bgColor={currentColor}

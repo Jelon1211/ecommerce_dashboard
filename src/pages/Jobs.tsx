@@ -171,7 +171,7 @@ export const Jobs = () => {
         <div className="flex flex-row items-center bg-gray-100 p-2 mb-2 justify-between">
           {/* <select
             className="bg-gray-100 w-fit py-2"
-            disabled={checkDisabled}
+            disabled={checkDisabled} 
             value={""}
             onChange={handleDeleteChecked}
           >

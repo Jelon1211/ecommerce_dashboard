@@ -7,11 +7,13 @@ export class AuthService {
   public async login(email: string, password: string) {
     return (
       // await axios.post<LoginResponse>(`${this.host}/app/auth/login`, {
-      await axios.post<LoginResponse>(`${this.host}/auth`, {
-        password: password,
-        username: email,
-      })
-    ).data;
+      (
+        await axios.post<LoginResponse>(`${this.host}/auth`, {
+          password: password,
+          username: email,
+        })
+      ).data
+    );
   }
 
   public register(
@@ -47,9 +49,8 @@ export class AuthService {
   public async getUserData(username: string) {
     return (
       await axios.post<UserData>(`${this.host}/auth/user`, {
-        username: username
+        username: username,
       })
     ).data;
   }
-
 }

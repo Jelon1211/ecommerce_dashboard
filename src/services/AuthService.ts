@@ -15,7 +15,7 @@ export class AuthService {
       ).data
     );
   }
-
+  //
   public register(
     firstName: string,
     lastName: string,
